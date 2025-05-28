@@ -37,7 +37,7 @@ Unlike Wikipedia, this application provides **advanced filtering, aggregation, a
 2. Install dependencies:  
    `pip install -r requirements.txt`  
 
-3. Set up the MySQL database and user tables according to the schema provided.  
+3. Change your directory to the OscarsWebApp file located in Milestone III folder.  
 
 
 4. Start the Flask application:  
