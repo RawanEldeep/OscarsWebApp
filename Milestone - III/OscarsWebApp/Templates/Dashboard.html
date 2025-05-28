@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Registeration</title>
+        <style>
+            html, body{
+                height: 100%;
+                margin:0; 
+                padding:0; 
+            }
+
+            body {
+                opacity:0; 
+                animation: fadeIn 1s ease-in-out forwards;
+                margin: 0; 
+                padding: 0; 
+                background: url("/static/images/bg3.webp") no-repeat center center fixed;
+                background-size: cover; 
+                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                display: flex; 
+                justify-content: center;
+                align-items:center
+            }
+            h1 {
+                font-size: 3em; 
+                margin-bottom: 40px; 
+                text-shadow: 2px 2px 4px rgb(183, 15, 29);
+            }
+            .ButtonBox{
+                display: flex; 
+                flex-direction: column;
+                gap: 15px
+            }
+
+            .HomeButton{
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+           }
+           .HomeButton:hover{
+                color: white;
+           }
+
+            @keyframes fadeIn {
+                to{
+                    opacity: 1;
+                }
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class = "ButtonBox">
+            <a href="/nominate" class = "HomeButton"> Add a Nomination</a>
+            <a href="/UserNominations" class = "HomeButton"> View Existing Nominations for the User</a>
+            <a href="/TopNomByUsers" class = "HomeButton"> Top Nominated Movies by Users (Each Category/Year)</a>
+            <a href="/TopNomRole" class = "HomeButton"> Nominations & Oscars for Dictor/Actor/Composer</a>
+            <a href="/BirthCountries" class = "HomeButton"> Top 5 Birth Countries (Best Actor Winners)</a>
+            <a href="/NomStaff" class = "HomeButton"> Nominees by Country of Birth</a>
+            <a href="/DreamTeam" class = "HomeButton"> The Dream Team</a>
+            <a href="/ProdCom" class = "HomeButton"> Top 5 Production Countries</a>
+            <a href="/NonEnglish" class = "HomeButton"> Non-English Oscar-wining Movies</a>
+        </div>
+           
+    </body>
+</html>

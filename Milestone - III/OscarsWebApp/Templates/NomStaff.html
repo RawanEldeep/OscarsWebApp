@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Nominate a Staff Member</title>
+        <style>
+            html, body{
+                height: 100%;
+                margin:0; 
+                padding:0; 
+            }
+
+            body {
+                opacity:0; 
+                animation: fadeIn 1s ease-in-out forwards;
+                background: url("/static/images/bg3.webp") no-repeat center center fixed;
+                background-size: cover; 
+                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding: 40px 0;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            @keyframes fadeIn {
+                to{
+                    opacity: 1;
+                }
+            }
+            body.fade-out{
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+            }
+
+            .FormBox{
+                background-color: rgba(0,0,0,0.9);
+                width: 420px; 
+                margin: 5% auto; 
+                padding: 40px 45px; 
+                border-radius: 12px;
+                box-shadow:  0 0 20px rgb(183, 15, 29);
+            }
+
+            label {
+                font-weight: bold; 
+                margin: 5px 0 15px 5px; 
+                padding: 5px;
+                color: white
+            }
+
+            input, select{
+                width: 100%; 
+                padding: 5px; 
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 1em; 
+                border-radius: 6px;
+                background-color: #222 ;
+                color: white; 
+            }
+            .DataBox{
+                background-color: rgba(0,0,0, 0.9);
+                color: rgb(183, 15, 29); 
+                width: 100%;
+                margin: 15% auto; 
+                padding: 40px; 
+                border-radius: 15px; 
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+            }
+
+            .SubmitButton{
+                all: unset;
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+
+            }
+            
+            .SubmitButton:hover{
+                color: white;
+            }
+            .HomeButton{
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+           }
+           .HomeButton:hover{
+                color: white;
+           }
+
+           .ResultsBox{
+                background-color: rgba(0,0,0,0.9);
+                width: 100%; 
+                max-width: 900px;
+                margin: 5% auto; 
+                padding: 40px 45px; 
+                border-radius: 12px;
+                box-shadow:  0 0 20px rgb(183, 15, 29);
+                overflow-x: auto;
+           }
+
+           .ResultsBox h2{
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: rgb(183, 15, 29);
+            text-align: center;
+           }
+
+           table {
+                width: 100%; 
+                border-collapse:  collapse;
+                max-height: 400px;
+                overflow-y: auto;
+                display: block;
+                margin-top: 20px; 
+                margin-bottom: 20px;
+                background-color: rgba(0,0,0, 0.85);
+            }
+            
+            th, td {
+                border: 1px solid rgb(255, 255, 255); 
+                padding: 10px; 
+                text-align: center; 
+
+            }
+
+            th{
+                background-color: white;
+            }
+
+        </style>
+    
+    </head>
+    <body>
+        <div class = "DataBox">
+            <h1>Oscar stats for nominees in a given country</h1>
+            {% if Results is none %}
+            <div class = "FormBox">
+                <form method = "POST" action = "/NomStaff">
+
+                    <label> Country:</label required>
+                    <input type = "text" name = "Country" required>
+            
+                    <div class = "SubmitButtomBox">
+                        <button class = "SubmitButton" type="submit">Show Results</button>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+
+            {% if Results %}
+            <div class = "ResultsBox">
+                <h2>Results for {{ Country }}:</h2>
+                <table>
+                    <tr>
+                        <th> Name: </th>
+                        <th> Category: </th>
+                        <th>Total Nominations: </th>
+                        <th>Total Oscars:</th>
+                    </tr>
+                    {% for  i in Results %}
+                    <tr>
+                        <td>{{ i[0] }} {{ i[1] or '' }} {{ i[2] }}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td>{{i[5]}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                
+            </div>
+            {% elif Results is not none %}
+                <p>No data found.</p>
+            {% endif %}
+        
+        <div class = "DashboardButtonBox">
+            <a  class = "HomeButton" href = "/Dashboard">Back to Dashboard</a>
+        </div>
+
+        </div>
+    </body>
+
+</html>

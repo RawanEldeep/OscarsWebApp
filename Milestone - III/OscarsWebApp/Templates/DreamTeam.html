@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Your Nomination</title>
+        <style>
+            html, body{
+                height: 100%;
+                margin:0; 
+                padding:0; 
+            }
+
+            body {
+                opacity:0; 
+                animation: fadeIn 1s ease-in-out forwards;
+                background: url("/static/images/bg3.webp") no-repeat center center fixed;
+                background-size: cover; 
+                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding: 40px 0;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            @keyframes fadeIn {
+                to{
+                    opacity: 1;
+                }
+            }
+
+            body.fade-out{
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+            }
+
+            .DataBox{
+                background-color: rgba(0,0,0, 0.9);
+                color: rgb(183, 15, 29); 
+                width: 100%;
+                margin: 15% auto; 
+                padding: 40px; 
+                border-radius: 15px; 
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+            }
+            .DataBox h1{
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            table {
+                width: 100%; 
+                border-collapse:  collapse;
+                max-height: 400px;
+                overflow-y: auto;
+                margin-top: 20px; 
+                margin-bottom: 20px;
+                background-color: rgba(0,0,0, 0.85);
+            }
+            
+            th, td {
+                border: 1px solid rgb(255, 255, 255); 
+                padding: 10 px; 
+                text-align: center; 
+
+            }
+
+            th{
+                background-color: white;
+            }
+           .HomeButton{
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+           }
+           .HomeButton:hover{
+                color: white;
+           }
+            
+        </style>
+    </head>
+    <body>
+        <div class = "DataBox">
+            <h1> The Dream Team:  </h1>
+
+            {% if Team %}
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Name</th>
+                    <th>OscarsWon</th>
+    
+                </tr>
+                {% for t in Team %}
+                <tr>
+                    <td>{{t[0]}}</td>
+                    <td>{{t[1]}} {{t[2] or ''}} {{t[3]}}</td>
+                    <td>{{t[4]}}</td>
+                
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <p>No data found</p>
+            {% endif %}
+
+            <div class = "DashboardButtonBox">
+                <a  class = "HomeButton" href = "/Dashboard">Back to Dashboard</a>
+            </div>
+        </div>
+       
+    </body>
+</html>

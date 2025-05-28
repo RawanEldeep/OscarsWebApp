@@ -1,0 +1,92 @@
+<!DOCTYPE html> 
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Oscars Web App</title>
+        <style>
+            html, body{
+                height: 100%;
+                margin:0; 
+                padding:0; 
+            }
+            body {
+                opacity:0; 
+                animation: fadeIn 1s ease-in-out forwards;
+                background: url("/static/images/bg3.webp") no-repeat center center fixed;
+                background-size: cover; 
+                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding: 40px 0;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+                transition: opacity 0.8s ease-in-out;
+                
+            }
+            @keyframes fadeIn {
+                to{
+                    opacity: 1;
+                }
+            }
+
+            
+
+            body.fade-out{
+                opacity: 0;
+            }
+            .DataBox{
+                background-color: rgba(0,0,0, 0.9);
+                color: rgb(183, 15, 29); 
+                width: 100%;
+                margin: 15% auto; 
+                padding: 40px; 
+                border-radius: 15px; 
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+            }
+            .DataBox h1{
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .DataBox p{
+                margin-bottom: 30px;
+            }
+
+
+
+            .RegisterButton{
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+
+            }
+
+            .RegisterButton:hover{
+                color: white;
+            }
+
+            
+        </style>
+    </head>
+    
+    <body>
+        <div class = "DataBox">
+            <h1> Welcome to our Oscars Webpage</h1>
+            <p> Begin your journy with us!</p>
+            <div class = "RegisterButtonBox">
+                <a class = "RegisterButton" href = "/register">Register Now!</a>
+            </div>
+
+        </div>
+        
+    </body>
+</html>

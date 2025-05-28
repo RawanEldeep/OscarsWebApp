@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset = "UTF-8">
+        <title>Nominate a Staff Member</title>
+        <style>
+            html, body{
+                height: 100%;
+                margin:0; 
+                padding:0; 
+            }
+
+            body {
+                opacity:0; 
+                animation: fadeIn 1s ease-in-out forwards;
+                background: url("/static/images/bg3.webp") no-repeat center center fixed;
+                background-size: cover; 
+                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding: 40px 0;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            @keyframes fadeIn {
+                to{
+                    opacity: 1;
+                }
+            }
+            body.fade-out{
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+            }
+
+            .FormBox{
+                background-color: rgba(0,0,0,0.9);
+                width: 420px; 
+                margin: 5% auto; 
+                padding: 40px 45px; 
+                border-radius: 12px;
+                box-shadow:  0 0 20px rgb(183, 15, 29);
+            }
+
+            label {
+                font-weight: bold; 
+                margin: 5px 0 15px 5px; 
+                padding: 5px;
+                color: white
+            }
+
+            input, select{
+                width: 100%; 
+                padding: 5px; 
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 1em; 
+                border-radius: 6px;
+                background-color: #222 ;
+                color: white; 
+            }
+
+
+            .DateBox{
+                display:flex; 
+                justify-content: space-between;
+                gap: 10px; 
+                margin-bottom: 5px;
+            }
+
+            .DateBox select{
+                flex:1;
+            }
+
+            .SubmitButton{
+                all: unset;
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+
+            }
+            
+            .SubmitButton:hover{
+                color: white;
+            }
+            .HomeButton{
+                background-color: rgb(183, 15, 29);
+                color: black; 
+                padding: 12px 24px; 
+                border-radius: 6px;
+                transition: 0.3s;
+                font-size: 1.2em;
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+                text-decoration: none;
+                cursor: pointer; 
+                display: inline-block;
+           }
+           .HomeButton:hover{
+                color: white;
+           }
+           .DataBox{
+                background-color: rgba(0,0,0, 0.9);
+                color: rgb(183, 15, 29); 
+                width: 100%;
+                margin: 15% auto; 
+             
+                border-radius: 15px; 
+                text-align: center;
+                box-shadow: 0 0 20px rgb(183, 15, 29);
+            }
+
+        </style>
+    
+    </head>
+    <body>
+        <div class = "DataBox">        
+            <div class = "FormBox">
+                <form method = "POST" action = '/nominate'>
+            
+                    <label> Nomination Category: </label>
+                    <br> 
+                    <input type = "text" name = "Category" placeholder = "e.g Best Actress" required>
+                    <br>
+
+                    <label> Movie Title: </label>
+                    <br> 
+                    <input type = "text" name = "Title" placeholder = "e.g Barbie Movie" required>
+                    <br>
+
+                    <label> Movie Release Date: </label>
+                    <br> 
+                    <div class = "DateBox">
+                        <select name = "ReleaseYear" required>
+                            {% for y in range(1920, 2025) %}
+                            <option value = "{{ y }}"> {{y}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name = "ReleaseMonth">
+                            {% for m in range(1, 13) %}
+                            <option value = "{{ '{:02d}'.format(m) }}"> {{'{:02d}'.format(m)}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name = "ReleaseDay" required>
+                            {% for d in range(1, 32) %}
+                            <option value = "{{ '{:02d}'.format(d) }}"> {{'{:02d}'.format(d)}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <br>
+
+                    <label>IterationNo</label>
+                    <br>
+                    <select name = "Iteration" required>
+                        {% for i in range(1, 97) %}
+                        <option value = "{{ i }}"> {{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <br> 
+
+                    <br> 
+
+                    <label> Year </label>
+                    <br> 
+                    <select name = "Year" required>
+                        {% for y in range(1929, 2025) %}
+                        <option value = "{{ y }}"> {{y}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <br>
+
+                    <label> Staff First Name: </label>
+                    <br> 
+                    <input type = "text" name = "FName" placeholder = "e.g Cillan"required>
+                    <br>
+
+                    <br> 
+
+                    <label> Staff Middle Name: </label>
+                    <br> 
+                    <input type = "text" name = "MName" placeholder = "If applicable">
+                    <br>
+
+                    <br> 
+
+                    <label> Staff Last Name: </label>
+                    <br> 
+                    <input type = "text" name = "LName" placeholder = "e.g Murphy" required>
+                    <br>
+
+                    <br>
+
+                    <div class = "SubmitButtomBox">
+                        <button class = "SubmitButton" type="submit">Nominate</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class = "DashboardButtonBox">
+                <a  class = "HomeButton" href = "/Dashboard">Back to Dashboard</a>
+            </div>
+        </div>
+
+    </body>
+</html>
