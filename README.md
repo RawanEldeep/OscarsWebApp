@@ -33,33 +33,3 @@ Unlike Wikipedia, this application provides **advanced filtering, aggregation, a
 
 A custom **web crawler** scrapes Wikipedia pages for all 96 iterations of the Academy Awards using BeautifulSoup. It parses nominee lists, winner details, and related actor/director profiles to populate the database.
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.x  
-- MySQL Server  
-- Required Python packages (Flask, BeautifulSoup, MySQL connector, etc.)
-
-### Installation & Setup
-
-1. Clone the repository:  
-   `git clone <repo-url>`  
-
-2. Install dependencies:  
-   `pip install -r requirements.txt`  
-
-3. Set up the MySQL database and user tables according to the schema provided.  
-
-4. Run the web scraper script to populate the database with award data.  
-
-5. Start the Flask application:  
-   `python app.py`  
-
-6. Open your browser and go to `http://localhost:5000` to use the app.  
-
-## Future Work
-
-- Expand user interface for more interactive visualizations.  
-- Implement more advanced recommendation features.  
-- Optimize scraper for new Oscar data as future awards occur.
