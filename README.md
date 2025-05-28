@@ -29,6 +29,22 @@ Unlike Wikipedia, this application provides **advanced filtering, aggregation, a
 - **Web Scraping:** BeautifulSoup to extract data from Wikipedia Academy Awards pages  
 - **Database:** MySQL for storing and querying all movie and nomination data  
 
+### Installation & Setup
+
+1. Clone the repository:  
+   `git clone <repo-url>`  
+
+2. Install dependencies:  
+   `pip install -r requirements.txt`  
+
+3. Set up the MySQL database and user tables according to the schema provided.  
+
+
+4. Start the Flask application:  
+   `python app.py`  
+
+5. Open your browser and go to `http://localhost:5000` to use the app.  
+
 ## Data Collection
 
 A custom **web crawler** scrapes Wikipedia pages for all 96 iterations of the Academy Awards using BeautifulSoup. It parses nominee lists, winner details, and related actor/director profiles to populate the database.
